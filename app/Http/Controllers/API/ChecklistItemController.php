@@ -30,7 +30,7 @@ class ChecklistItemController extends Controller
 
         $checklistItem = new ChecklistItem([
             'checklist_id' => $checklistId,
-            'name' => $request->name,
+            'name' => $request->itemName,
             'status' => false,
         ]);
         $checklistItem->save();
@@ -58,7 +58,7 @@ class ChecklistItemController extends Controller
         }
 
         $checklistItem->update([
-            'name' => $request->name,
+            'name' => $request->itemName,
         ]);
 
         return JsonApiResponse::success($checklistItem);
