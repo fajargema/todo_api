@@ -49,6 +49,21 @@ class ChecklistItemController extends Controller
         return JsonApiResponse::success($checklistItem);
     }
 
+    public function update(Request $request, string $checklistId, string $checklistItemId)
+    {
+        $checklistItem = ChecklistItem::where('checklist_id', $checklistId)->findOrFail($checklistItemId);
+
+        if (!$checklistItem) {
+            return JsonApiResponse::error("checklist item not found", Response::HTTP_NOT_FOUND);
+        }
+
+        $checklistItem->update([
+            'name' => $request->name,
+        ]);
+
+        return JsonApiResponse::success($checklistItem);
+    }
+
     public function destroy(string $checklistId, string $checklistItemId)
     {
         $checklistItem = ChecklistItem::where('checklist_id', $checklistId)->findOrFail($checklistItemId);
