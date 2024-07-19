@@ -24,7 +24,7 @@ Route::prefix('v1')->middleware('api')->group(function () {
         Route::delete('checklist/{id}', [ChecklistController::class, 'destroy']);
 
         Route::get('checklist/{checklistId}/item', [ChecklistItemController::class, 'index']);
-        Route::get('checklist/{checklistId}/item/{checklistItemId}', [ChecklistItemController::class, 'index']);
+        Route::get('checklist/{checklistId}/item/{checklistItemId}', [ChecklistItemController::class, 'getChecklistItemByID']);
         Route::post('checklist/{checklistId}/item', [ChecklistItemController::class, 'store']);
         Route::put('checklist/{checklistId}/item/{checklistItemId}', [ChecklistItemController::class, 'updateStatus']);
         Route::put('checklist/{checklistId}/item/rename/{checklistItemId}', [ChecklistItemController::class, 'update']);
